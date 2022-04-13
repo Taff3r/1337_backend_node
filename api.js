@@ -38,10 +38,50 @@ const filePath = './data.json';
     });
 
     app.get('/api/coworkers', (req, res) => {
+        let responseData;
+        const reqLower = req.query.start;
+        const reqUpper = req.query.end;
+     
+        console.log("Got request");
+        // Check if both params are present
+        if (reqUpper && reqLower) {
+
+            const upper = validateIntegerParameter(reqUpper);
+            const lower = validateIntegerParameter(reqLower);
+            
+            if (upper < lower) {
+                console.log("bad request");
+                res.status(400).send();
+                return;
+            }
+            if (lower <= data.length && lower >= 0) {
+                if (lower <= upper) {
+                    responseData = data.slice(lower, upper);
+                } else if (data.length <= upper) {
+                    responseData = data.slice(lower, data.length - 1);
+                } else { // Bad format, lower > upper
+                    res.status(400).send();
+                    return;
+                }
+            } else {
+                // Bad request
+                res.status(400).send();
+                return;
+            }
+        } else if ((reqLower && !reqUpper) || (!reqLower && reqUpper)){  
+            // If one param is missing, return error code, since bad request.
+            res.status(400).send();
+            return;
+        } else {
+            // No parameters, send all the data
+            responseData = data;
+        }
+
         let responseJson = {
-            data : data,
+            data : responseData,
             totalLength : data.length
         };
+
         res.status(200).json(responseJson);
     });
 
@@ -49,7 +89,7 @@ const filePath = './data.json';
         const id = validateIntegerParameter(req.params.id);
         if (id >= 1) { 
             if (id > data.length) { // Not found
-                res.status(404);
+                res.status(404).send();
                 return;
             } else {
                 res.status(200).json(data[id - 1]);
@@ -61,12 +101,12 @@ const filePath = './data.json';
     
 })();
 
-// Validate that a parameter is a positive integer
+// Validate that a parameter is a positive integer (0 included)
 // @param parameter that should be validated.
-// @returns the parsed parameter as an integer, or 0 if the parameter couldn't be parsed as an integer
+// @returns the parsed parameter as an integer, or -1 if the parameter couldn't be parsed as a positive integer
 const validateIntegerParameter = (parameter) => {
     const id = parseInt(parameter);
-    return (isNaN(id) || id < 1) ? 0 : id;
+    return (isNaN(id) || id < 0) ? -1 : id;
 };
 
 

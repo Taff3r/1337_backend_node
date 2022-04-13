@@ -99,7 +99,7 @@ class tretton37Scraper {
         // instead of waiting for each of them to resolve before queuing next one.
         let ninjaPromiseArr = []; 
         for (let i = 1; i <= numNinjas; ++i) {
-            ninjaPromiseArr.push(this.parseNinja(page.$(ninjaDivSelector(i)), i));
+            ninjaPromiseArr.push(this.parseNinja(page.$(ninjaDivSelector(i)), i - 1));
         }
         
         const finalNinjas = await Promise.all(ninjaPromiseArr);
@@ -107,9 +107,6 @@ class tretton37Scraper {
         await this.browser.close();
         return finalNinjas;
     }
-
-    
-
 };
 
 module.exports = tretton37Scraper;
