@@ -1,0 +1,26 @@
+{
+  "name": "1337_backend_node",
+  "version": "0.0.1",
+  "description": "Backend Assignment 1337",
+  "main": "api.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Taff3r/1337_backend_node.git"
+  },
+  "author": "Simon Tenggren",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Taff3r/1337_backend_node/issues"
+  },
+  "homepage": "https://github.com/Taff3r/1337_backend_node#readme",
+  "dependencies": {
+    "chromium": "^3.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "fs": "^0.0.1-security",
+    "puppeteer": "^13.5.2"
+  }
+}
