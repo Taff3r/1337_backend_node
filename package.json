@@ -2,8 +2,9 @@
   "name": "1337_backend_node",
   "version": "0.0.1",
   "description": "Backend Assignment 1337",
-  "main": "api.js",
+  "main": "src/api.js",
   "scripts": {
+    "start": "node src/api.js",
     "test": "test"
   },
   "repository": {
@@ -22,5 +23,16 @@
     "express": "^4.17.3",
     "fs": "^0.0.1-security",
     "puppeteer": "^13.5.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.13.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "prettier": "^2.6.2"
   }
 }

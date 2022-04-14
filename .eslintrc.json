@@ -1,0 +1,31 @@
+{
+    "env": {
+        "node": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": [
+        "prettier"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest" 
+    },
+   "plugins": [
+       "prettier"
+   ],
+    "rules": {
+        "prettier/prettier": "warn",
+        "indent": [
+            "error",
+            4
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "warn",
+            "always"
+        ]
+    }
+}
