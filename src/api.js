@@ -1,11 +1,15 @@
 "use strict";
 const express = require("express");
-const fs = require("fs");
 const cors = require("cors");
 const routes = require("./routes/index.js");
+const middleware = require("./middleware/index");
+
 const app = express();
 
-app.use(cors({ origin: "https://backend-assignment.1337co.de" }));
+// Load middleware
+app.use(middleware());
+
+// Load routes
 app.use(routes);
 
 // Start server on localhost:1337

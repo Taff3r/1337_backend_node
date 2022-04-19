@@ -13,7 +13,7 @@ const coworkerData = (async () => {
     if (!fs.existsSync(filePath)) {
         console.debug("No data found. Starting scraper.");
         const scraper = new tretton37Scraper();
-        const coworkerData = await scraper.scrape();
+        coworkerData = await scraper.scrape();
         console.debug("Scraping complete. Saving data");
         fs.writeFileSync(filePath, JSON.stringify(coworkerData));
     } else {
