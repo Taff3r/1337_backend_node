@@ -1,16 +1,5 @@
 "use strict";
-
-const express = require("express");
-const router = express.Router();
-const model = require("../models/coworker_model.js");
-
-// Validate that a parameter is a positive integer (0 included)
-// @param parameter that should be validated.
-// @returns the parsed parameter as an integer, or -1 if the parameter couldn't be parsed as a positive integer
-const validateIntegerParameter = (parameter) => {
-    const id = parseInt(parameter);
-    return isNaN(id) || id < 0 ? -1 : id;
-};
+const model = require("../models/coworker.model");
 
 /**
  * Validates the pagiation parameters, if they are present
@@ -37,8 +26,7 @@ const validatePagiation = async (lower, upper) => {
     return [200, lower, upper];
 };
 
-router.get("/", async (req, res) => {
-    console.log("got request to coworkers");
+module.exports.getCoworkers = async (req, res) => {
     let responseData;
     // Check if both params are present
     if (req.query.start && req.query.end) {
@@ -64,23 +52,4 @@ router.get("/", async (req, res) => {
         totalLength: await model.getNumberOfCoworkers(),
     };
     res.status(200).json(responseJson);
-});
-
-router.get("/:id", async (req, res) => {
-    console.debug("getting coworker w id");
-    console.debug(req.params.id);
-    const id = validateIntegerParameter(req.params.id);
-    if (id >= 1) {
-        if (id > (await model.getNumberOfCoworkers())) {
-            // Not found
-            res.status(404).send();
-            return;
-        } else {
-            res.status(200).json(await model.getCoworker(id));
-        }
-        return;
-    }
-    res.status(400);
-});
-
-module.exports = router;
+};
