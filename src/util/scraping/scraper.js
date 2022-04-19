@@ -3,6 +3,11 @@
 const puppeteer = require("puppeteer");
 const NinjaBuilder = require("./ninjaBuilder.js");
 
+/**
+ * Class for scraping the coworker information from:
+ * http://tretton37.com/meet and pages of individual employees.
+ *
+ */
 class tretton37Scraper {
     /**
      * Parse the ninja from a div scraped from the meet url.
@@ -134,7 +139,7 @@ class tretton37Scraper {
         let ninjaPromiseArr = [];
         for (let i = 1; i <= numNinjas; ++i) {
             ninjaPromiseArr.push(
-                this.parseNinja(page.$(ninjaDivSelector(i)), i - 1)
+                this.parseNinja(page.$(ninjaDivSelector(i)), i)
             );
         }
 
