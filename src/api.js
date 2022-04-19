@@ -2,12 +2,11 @@
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
-const coworkerController = require("./coworkers/controllers/coworker_controller.js");
+const routes = require("./routes/index.js");
 const app = express();
 
 app.use(cors({ origin: "https://backend-assignment.1337co.de" }));
-app.use("/api/coworkers", coworkerController);
-app.use("/api/coworker", coworkerController);
+app.use(routes);
 
 // Start server on localhost:1337
 var server = app.listen(1337, () => {
