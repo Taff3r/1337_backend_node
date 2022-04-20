@@ -10,6 +10,8 @@ const router = express.Router();
  *      get:
  *          summary: Gets a coworker by their ID.
  *          description: Gets a coworker by their ID.
+ *          security:
+ *          - jwt: []
  *          parameters:
  *              - in: path
  *                name: id
