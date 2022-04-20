@@ -25,7 +25,9 @@
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.15",
-    "puppeteer": "^13.5.2"
+    "puppeteer": "^13.5.2",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
     "eslint": "^8.13.0",

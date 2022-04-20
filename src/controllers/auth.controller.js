@@ -1,11 +1,12 @@
 "use strict";
 
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-const privateKey = "TOTALLY-SUPER-SECRET-KEY";
+const jwtService = require("../services/jwt.service");
 
-const TwoHourExpiration = () => Math.floor(Date.now() / 1000) + 2 * 60 * 60;
-
+/**
+ * Handles an authentication request.
+ * @param req, the request object, must contain the username in its body.
+ * @param res, the response object.
+ */
 module.exports.authenticate = (req, res) => {
     console.log("trying to authenticate user");
     const payload = req.body;
@@ -15,15 +16,6 @@ module.exports.authenticate = (req, res) => {
         return;
     }
 
-    const token = jwt.sign(
-        {
-            data: {
-                name: payload.username,
-            },
-            exp: TwoHourExpiration()
-        },
-        privateKey
-    );
-    console.log(token);
+    const token = jwtService.signJwt({ username: payload.username });
     res.status(200).contentType("plain/text").send(token);
 };

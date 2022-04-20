@@ -5,8 +5,8 @@ const coworkersRoutes = require("./coworkers.routes");
 const coworkerRoutes = require("./coworker.routes");
 const authRoutes = require("./login.routes");
 
-router.use("/api/coworkers", coworkersRoutes);
-router.use("/api/coworker", coworkerRoutes);
-router.use("/api/login", authRoutes);
+router.use("/coworkers", coworkersRoutes);
+router.use("/coworker", coworkerRoutes);
+router.use("/login", authRoutes);
 
 module.exports = router;
