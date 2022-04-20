@@ -49,8 +49,6 @@ module.exports = (req, res, next) => {
         return next();
     } catch (err) {
         const code = handleJwtError(err);
-        return res.status(code).send(err.msg);
+        return res.status(code).send(err.message);
     }
 };
-
-
