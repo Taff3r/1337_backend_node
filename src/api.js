@@ -1,16 +1,18 @@
 "use strict";
 const express = require("express");
-const cors = require("cors");
 const routes = require("./routes/index.js");
 const middleware = require("./middleware/index");
-
+const docs = require("./docs/swagger.docs");
 const app = express();
 
 // Load middleware
-app.use(middleware());
+app.use("/api/", middleware());
 
 // Load routes
-app.use(routes);
+app.use("/api/", routes);
+
+// Load docs
+app.use(docs);
 
 // Start server on localhost:1337
 var server = app.listen(1337, () => {
