@@ -8,7 +8,6 @@ const jwtService = require("../services/jwt.service");
  * @param res, the response object.
  */
 module.exports.authenticate = (req, res) => {
-    console.log("trying to authenticate user");
     const payload = req.body;
 
     if (!payload || !payload.username) {

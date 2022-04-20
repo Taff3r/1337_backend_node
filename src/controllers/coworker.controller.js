@@ -17,7 +17,13 @@ module.exports.getCoworker = async (req, res) => {
             res.status(404).send();
             return;
         } else {
-            res.status(200).json(await model.getCoworker(id));
+            const fullCoworker = await model.getCoworker(id);
+            const specifics = {
+                name: fullCoworker.name,
+                text: fullCoworker.text,
+                imagePortraitUrl: fullCoworker.imagePortraitUrl,
+            };
+            res.status(200).json(specifics);
         }
         return;
     }
