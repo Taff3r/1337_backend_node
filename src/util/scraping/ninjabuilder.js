@@ -1,5 +1,4 @@
 "use strict";
-// const Ninja = require('./ninja.js');
 
 function asObject(
     id,

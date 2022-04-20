@@ -10,6 +10,8 @@ const router = express.Router();
  *      get:
  *          summary: Gets a coworker by their ID.
  *          description: Gets a coworker by their ID.
+ *          security:
+ *          - jwt: []
  *          parameters:
  *              - in: path
  *                name: id
@@ -25,21 +27,10 @@ const router = express.Router();
  *                          schema:
  *                              type: object
  *                              properties:
- *                                  id:
- *                                      type: integer
- *                                      description: The ID of the coworker.
- *                                      example: 1
  *                                  name:
  *                                      type: string
  *                                      description: The name of the coworker.
  *                                      example: Simon Tenggren
- *                                  city:
- *                                      type: string
- *                                      description: The city the coworker works in.
- *                                      example: Lund
- *                                  country:
- *                                      type: string
- *                                      description: The country code for the country the coworker operates in.
  *                                  text:
  *                                      type: string
  *                                      description: Some text describing the coworker.
@@ -48,10 +39,6 @@ const router = express.Router();
  *                                      type: string
  *                                      description: An URL pointing towards an image displaying a portrait of the coworker.
  *                                      example: https://simontenggren.netlify.app/Images/me.jpg
- *                                  imageFullUrl:
- *                                      type: string
- *                                      description: An URL pointing towards an image displaying a full image of the coworker.
- *                                      example: https://www.instagram.com/p/BzAqOkEILsi/?utm_source=ig_web_copy_link 
  *              "401":
  *                  description: Unauthroized.
  *              "404":
