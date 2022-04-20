@@ -45,6 +45,8 @@ const router = express.Router();
  *                  description: The coworked with the provided id doesn't exist.
  *              "400":
  *                  description: The id is missing or not a positive integer.
+ *              "403":
+ *                  description: Forbidden. JWT expired or other error.
  */
 router.get("/:id", controller.getCoworker);
 

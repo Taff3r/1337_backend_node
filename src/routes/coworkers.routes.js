@@ -74,6 +74,8 @@ const controller = require("../controllers/coworkers.controller");
  *                  description: The lower range given by the start parameter is higher than the total amount of coworkers.
  *              "400":
  *                  description: One of the query parameters (begin or end) is missing, or the request is not formatted correctly.
+ *              "403":
+ *                  description: Forbidden. JWT expired or other error.
  *
  */
 router.get("/", controller.getCoworkers);
