@@ -40,7 +40,7 @@ const router = express.Router();
  *                                      description: An URL pointing towards an image displaying a portrait of the coworker.
  *                                      example: https://simontenggren.netlify.app/Images/me.jpg
  *              "401":
- *                  description: Unauthroized.
+ *                  description: Unauthroized or missing JWT.
  *              "404":
  *                  description: The coworked with the provided id doesn't exist.
  *              "400":

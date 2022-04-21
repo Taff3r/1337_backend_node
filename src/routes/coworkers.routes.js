@@ -69,7 +69,7 @@ const controller = require("../controllers/coworkers.controller");
  *                                      example: 123
  *
  *              "401":
- *                  description: Unauthorized.
+ *                  description: Unauthorized or missing JWT.
  *              "404":
  *                  description: The lower range given by the start parameter is higher than the total amount of coworkers.
  *              "400":
