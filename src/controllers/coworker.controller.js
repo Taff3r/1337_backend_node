@@ -14,8 +14,7 @@ module.exports.getCoworker = async (req, res) => {
     if (id >= 1) {
         if (id > (await model.getNumberOfCoworkers())) {
             // Not found
-            res.status(404).send();
-            return;
+            return res.status(404).send();
         } else {
             const fullCoworker = await model.getCoworker(id);
             const specifics = {
@@ -25,7 +24,6 @@ module.exports.getCoworker = async (req, res) => {
             };
             res.status(200).json(specifics);
         }
-        return;
     }
-    res.status(400);
+    return res.status(400).send();
 };

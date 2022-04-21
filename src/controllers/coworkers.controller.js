@@ -36,20 +36,25 @@ module.exports.getCoworkers = async (req, res) => {
         );
 
         if (status !== 200) {
-            res.status(status).send();
+            return res.status(status).send();
         }
 
         const maxLength = await model.getNumberOfCoworkers();
         const upperBound = maxLength < upper ? maxLength : upper;
 
         responseData = await model.getCoworkerSpan(lower, upperBound);
+
+        // Only one query parameter is used since both are not
+    } else if (req.query.start || req.query.end) {
+        return res.status(400).send();
     } else {
         responseData = await model.getCoworkers();
+        /* Check only one present */
     }
 
     const responseJson = {
         data: responseData,
         totalLength: await model.getNumberOfCoworkers(),
     };
-    res.status(200).json(responseJson);
+    return res.status(200).json(responseJson);
 };

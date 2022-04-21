@@ -42,9 +42,9 @@ const router = express.Router();
  *              "401":
  *                  description: Unauthroized or missing JWT.
  *              "404":
- *                  description: The coworked with the provided id doesn't exist.
+ *                  description: The coworked with the provided id doesn't exist or id is missing.
  *              "400":
- *                  description: The id is missing or not a positive integer.
+ *                  description: The id is not a positive integer.
  *              "403":
  *                  description: Forbidden. JWT expired or other error.
  */
