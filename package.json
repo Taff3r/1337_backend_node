@@ -4,8 +4,8 @@
   "description": "Backend Assignment 1337",
   "main": "src/api.js",
   "scripts": {
-    "start": "node src/api.js",
-    "test": "test"
+    "start": "nodemon ./src/api.js",
+    "test": "npx mocha ./test/"
   },
   "repository": {
     "type": "git",
